@@ -24,14 +24,14 @@ password = 'Safa09071993+'
 
 api = SentinelAPI(user, password, 'https://scihub.copernicus.eu/dhus')
 SAVE_FOLDER='sat_images'
-#SHAPE='shapefiles'
+SHAPE='shapefiles'
 def main():
     if not os.path.exists(SAVE_FOLDER):
         os.mkdir(SAVE_FOLDER)
         download()
-    #if not os.path.exists(SHAPE):
-        #os.mkdir(SHAPE)
-        #buildings()
+    if not os.path.exists(SHAPE):
+        os.mkdir(SHAPE)
+        buildings()
  
 def download():
     # search by polygon
@@ -46,9 +46,9 @@ def download():
                      limit=1)
     print (len(products))
     print("Start downloading...")
-    #for i in products:
+    for i in products:
         #api.get_product_odata(i)
-        #api.download(i,SAVE_FOLDER)
+        api.download(i,SAVE_FOLDER)
 print('Finished downloading satellite image')
 #Retrieve buildings with height data from OSM
 def buildings():
